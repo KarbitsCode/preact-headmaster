@@ -1,4 +1,4 @@
-import { h, VNode } from 'preact';
+import { VNode } from 'preact';
 import { useEffect, useState, useRef } from 'preact/hooks';
 
 export interface HeadmasterProps {
@@ -28,7 +28,7 @@ let serverHeadmasterData: HeadmasterProps = {};
 const isServer = typeof window === 'undefined';
 
 const createOrUpdateElement = (tagName: string, attributes: Record<string, any>, innerHTML?: string): HTMLElement => {
-  const element = document.head.querySelector(`${tagName}[data-headmaster]`) || document.createElement(tagName);
+  let element = document.createElement(tagName);
   element.setAttribute('data-headmaster', '');
   
   Object.entries(attributes).forEach(([key, value]) => {
