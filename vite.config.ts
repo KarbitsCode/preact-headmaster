@@ -1,10 +1,16 @@
 import { defineConfig } from 'vite';
 import preact from '@preact/preset-vite';
 import { resolve } from 'path';
+import dts from 'vite-plugin-dts';
 import pkg from './package.json';
 
 export default defineConfig({
-  plugins: [preact()],
+  plugins: [
+    preact(),
+    dts({
+      insertTypesEntry: true
+    })
+  ],
   build: {
     lib: {
       entry: resolve(__dirname, 'src/index.ts'),
