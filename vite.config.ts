@@ -7,9 +7,7 @@ import pkg from './package.json';
 export default defineConfig({
   plugins: [
     preact(),
-    dts({
-      insertTypesEntry: true
-    })
+    dts()
   ],
   build: {
     minify: true,
