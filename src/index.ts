@@ -71,7 +71,7 @@ export const useHeadmaster = (headmasterData: HeadmasterProps): { rerender: () =
 
     if (headmasterData.bodyAttributes !== prevHeadmasterData.bodyAttributes) {
       Object.entries(headmasterData.bodyAttributes || {}).forEach(([key, value]) => {
-        document.body.setAttribute(key, value);
+        document.body?.setAttribute(key, value);
       });
     }
 
@@ -83,12 +83,12 @@ export const useHeadmaster = (headmasterData: HeadmasterProps): { rerender: () =
         if (Array.isArray(currentAttributes)) {
           currentAttributes.forEach((attributes: Record<string, any>) => {
             const element = createOrUpdateElement(tagName, attributes);
-            document.head.appendChild(element);
+            document.head?.appendChild(element);
             elements.push(element);
           });
         } else if (typeof currentAttributes === 'object' && currentAttributes !== null) {
           const element = createOrUpdateElement(tagName, currentAttributes);
-          document.head.appendChild(element);
+          document.head?.appendChild(element);
           elements.push(element);
         }
       }
